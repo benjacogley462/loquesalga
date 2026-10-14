@@ -18,7 +18,7 @@
             overflow: hidden;
         }
 
-        /* Contenedor principal estático */
+        /* Contenedor principal de PC */
         #main-wrapper {
             position: relative;
             display: flex;
@@ -26,7 +26,7 @@
             align-items: center;
             width: 100%;
             height: 100%;
-            padding: 0 4vw;
+            padding: 0 5vw;
         }
 
         /* Textos laterales */
@@ -41,33 +41,32 @@
             z-index: 5;
         }
 
-        /* SECCIÓN DEL CORAZÓN GRANDOTE EN PC */
+        /* SECCIÓN CENTRAL DEL CORAZÓN (Centrado absoluto perfecto en PC) */
         .heart-section {
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
+            width: 0;
+            height: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            pointer-events: none;
-            /* El latido ocurre exclusivamente en el corazón */
             animation: latidoCorazon 1.8s infinite ease-in-out;
+            z-index: 4;
         }
 
         #heart-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            width: 0;
+            height: 0;
         }
 
-        /* Nombre ZAI centrado exacto */
+        /* Nombre ZAI centrado exactamente en el corazón */
         .center-name {
             position: absolute;
-            top: 50%;
             left: 50%;
+            top: 50%;
             transform: translate(-50%, -50%);
             color: #ff3366;
             font-size: 42px;
@@ -75,6 +74,7 @@
             text-align: center;
             text-shadow: 0 0 14px rgba(255, 51, 102, 0.95);
             z-index: 10;
+            pointer-events: none;
         }
 
         /* Palabras que forman el corazón */
@@ -97,7 +97,7 @@
             }
         }
 
-        /* Latido sin sacudir pantalla */
+        /* Latido exclusivo del corazón sin sacudir la pantalla */
         @keyframes latidoCorazon {
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
             15% { transform: translate(-50%, -50%) scale(1.06); }
@@ -106,7 +106,7 @@
             60% { transform: translate(-50%, -50%) scale(1); }
         }
 
-        /* Reproductor de música */
+        /* Reproductor de música flotante */
         .music-player {
             position: fixed;
             bottom: 15px;
@@ -120,7 +120,7 @@
         }
 
         /* ==========================================================
-           MODO CELULAR (RESPONSIVE): Detecta si se entra desde el cel
+           MODO CELULAR (RESPONSIVE)
            ========================================================== */
         @media (max-width: 850px) {
             body {
@@ -137,6 +137,8 @@
                 gap: 20px;
                 height: auto;
                 padding-bottom: 90px;
+                padding-left: 0;
+                padding-right: 0;
             }
 
             .side-text {
@@ -152,8 +154,8 @@
                 left: auto;
                 top: auto;
                 transform: none;
-                width: 320px;
-                height: 320px;
+                width: 100%;
+                height: 300px;
                 margin: 10px 0;
                 animation: latidoMovil 1.8s infinite ease-in-out;
             }
@@ -185,20 +187,20 @@
 
     <div id="main-wrapper">
         
-        <!-- Texto Izquierdo (En cel va arriba) -->
+        <!-- Texto Izquierdo (Arriba en celular / Izquierda en PC) -->
         <div id="left-text" class="side-text">
             Primero que nada, quería darte las gracias por la amistad que tenemos y por siempre estar ahí. Hay muchas cosas que me gustaría decirte, pero no me sé explicar mucho, solo sé que una de las cosas que me gustaría que sepas es que:<br><br>
             Sos linda, pero no solo por fuera, linda por cómo sos vos. (Tu personalidad)<br><br>
             Tenés una sonrisa que me arregla el día entero, de esas que se contagian.
         </div>
 
-        <!-- Corazón enorme en el centro -->
+        <!-- Sección central con el corazón grande y "ZAI" perfectamente centrado -->
         <div class="heart-section">
             <div class="center-name">ZAI</div>
             <div id="heart-container"></div>
         </div>
 
-        <!-- Texto Derecho (En cel va abajo) -->
+        <!-- Texto Derecho (Abajo en celular / Derecha en PC) -->
         <div id="right-text" class="side-text">
             Sos alegre, iluminás todo sin darte cuenta.<br><br>
             Sos buena compañía, de las que valen de verdad, de las que quiero tener cerca siempre.<br><br>
@@ -236,12 +238,11 @@
             let x = 16 * Math.pow(Math.sin(t), 3);
             let y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
 
-            // Detectamos si es pantalla chica (celular) o grande (PC) para ajustar la escala
             let esCelular = window.innerWidth <= 850;
             let escala = esCelular ? 8.5 : 15.0; 
 
-            let posX = (container.offsetWidth / 2) + (x * escala);
-            let posY = (container.offsetHeight / 2) + (y * escala);
+            let posX = x * escala;
+            let posY = y * escala;
 
             const span = document.createElement('span');
             span.classList.add('word');
