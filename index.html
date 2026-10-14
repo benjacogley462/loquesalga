@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>loquesalga - Proyectos</title>
+    <title>loquesalga - Mis Proyectos</title>
     <style>
         * {
             box-sizing: border-box;
@@ -43,7 +43,7 @@
             line-height: 1.6;
         }
 
-        /* Grid de tarjetas para los proyectos */
+        /* Contenedor de las tarjetas de proyectos */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -52,7 +52,7 @@
             max-width: 900px;
         }
 
-        /* Tarjeta individual */
+        /* Tarjeta de proyecto individual */
         .card {
             background: #161922;
             border: 1px solid #2d3748;
@@ -117,42 +117,41 @@
 </head>
 <body>
 
-    <!-- Encabezado con título y descripción del repositorio -->
+    <!-- Encabezado Principal -->
     <header>
         <h1>loquesalga</h1>
         <p class="description">
-            cosas que me gusta intentar y subirlas
+            cosas que me gusta intentar y subirlas. Selecciona un proyecto para abrirlo.
         </p>
     </header>
 
-    <!-- Galería con tus carpetas/proyectos -->
+    <!-- Lista de Proyectos disponibles para elegir -->
     <main class="projects-grid">
 
-        <!-- Proyecto 1: CorazonTQM -->
-        <div class="card">
-            <div>
-                <h2>❤️ Corazón TQM</h2>
-                <p>Animación interactiva del corazón formado por palabras con latidos en vivo.</p>
-            </div>
-            <!-- Ruta exacta dentro de tu estructura de carpetas -->
-            <a href="./TQM/CorazonTQM/" class="btn">Ver Proyecto 🚀</a>
-        </div>
-
-        <!-- Proyecto 2: ZAI -->
+        <!-- Proyecto ZAI (El que acabamos de armar con dedicatoria y música) -->
         <div class="card">
             <div>
                 <h2>✨ Proyecto ZAI</h2>
-                <p>Dedicatoria especial con mensajes laterales, nombre central y playlist de música.</p>
+                <p>Dedicatoria especial interactiva con corazón animado, mensajes laterales personalizados, nombre central y playlist musical de YouTube.</p>
             </div>
-            <!-- Ruta exacta dentro de tu estructura de carpetas -->
-            <a href="./TQM/ZAI/" class="btn">Ver Proyecto 🚀</a>
+            <!-- Conecta exactamente con tu carpeta TQM/ZAI -->
+            <a href="./TQM/ZAI/" class="btn">Entrar al Proyecto 🚀</a>
+        </div>
+
+        <!-- Espacio para futuros proyectos -->
+        <div class="card">
+            <div>
+                <h2>🛠️ Próximo Proyecto</h2>
+                <p>Espacio reservado para el siguiente experimento, juego o página web que decidas agregar al repositorio.</p>
+            </div>
+            <a href="#" class="btn" style="opacity: 0.5; pointer-events: none;">Próximamente...</a>
         </div>
 
     </main>
 
-    <!-- Pie de página con enlace a GitHub -->
+    <!-- Pie de página -->
     <footer>
-        <p>Desarrollado con ❤️ | <a href="https://github.com/benjacogley462/loquesalga" target="_blank">Ver en GitHub</a></p>
+        <p>Desarrollado por Benjamín | <a href="https://github.com/benjacogley462/loquesalga" target="_blank">Ver repositorio en GitHub</a></p>
     </footer>
 
 </body>
