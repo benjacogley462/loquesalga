@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lo Que Salga - Proyectos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0d0e12;
+            color: #e0e6ed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff3366;
+            text-shadow: 0 0 12px rgba(255, 51, 102, 0.6);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        p.description {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+
+        /* Grid de Proyectos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Tarjeta de Proyecto */
+        .card {
+            background: #161922;
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #ff3366;
+            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.25);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #a0aec0;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* Botón de Entrada */
+        .btn {
+            display: inline-block;
+            text-align: center;
+            background-color: #ff3366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #e02452;
+            box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.85rem;
+            color: #718096;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ff3366;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con Título y Descripción -->
+    <header>
+        <h1>loquesalga</h1>
+        <p class="description">
+            Cosas que me gusta intentar, experimentar y subir. Un espacio con pequeños proyectos interactivos, animaciones en HTML/JS y sorpresas.
+        </p>
+    </header>
+
+    <!-- Galería / Grid de Carpetas y Proyectos -->
+    <main class="projects-grid">
+
+        <!-- Proyecto 1: TQM -->
+        <div class="card">
+            <div>
+                <h2>❤️ TQM</h2>
+                <p>Una dedicatoria especial animada con un corazón en movimiento formado por palabras, mensajes personalizados y música de fondo.</p>
+            </div>
+            <!-- Enlace relativo a la carpeta TQM -->
+            <a href="./TQM/corazon.html" class="btn">Abrir Proyecto 🚀</a>
+        </div>
+
+        <!-- Proyecto 2: Ejemplo de nuevo proyecto (Puedes duplicar este bloque cuando crees más carpetas) -->
+        <div class="card">
+            <div>
+                <h2>✨ Próximo Proyecto</h2>
+                <p>Espacio reservado para el siguiente experimento o página web que decidas agregar al repositorio.</p>
+            </div>
+            <a href="#" class="btn" style="opacity: 0.6; pointer-events: none;">En desarrollo 🛠️</a>
+        </div>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>Desarrollado con ❤️ | <a href="https://github.com/benjacogley462/loquesalga" target="_blank">Ver repositorio en GitHub</a></p>
+    </footer>
+
+</body>
+</html>
