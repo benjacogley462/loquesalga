@@ -6,46 +6,63 @@
     <title>Para Zai ❤️</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             background-color: #000;
-            height: 100vh;
-            overflow: hidden;
+            color: #ff3366;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Courier New', Courier, monospace;
+            overflow-x: hidden;
+            padding: 20px 10px;
         }
 
+        /* Envoltorio principal */
         #main-wrapper {
-            position: relative;
             display: flex;
-            justify-content: center;
+            flex-direction: row;
+            justify-content: space-around;
             align-items: center;
             width: 100%;
-            height: 100%;
+            max-width: 1200px;
             animation: latido 2.0s infinite ease-in-out;
         }
 
-        #heart-container {
-            position: absolute;
-        }
-
-        /* Estilo general para los textos laterales */
+        /* Estilo general para los bloques de texto */
         .side-text {
-            position: absolute;
             color: #ff3366;
             font-size: 13px;
             font-weight: bold;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.5;
             text-shadow: 0 0 6px rgba(255, 51, 102, 0.7);
-            width: 240px;
+            width: 280px;
+            z-index: 5;
+        }
+
+        /* ÁREA DEL CORAZÓN */
+        .heart-section {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
         }
 
         .center-name {
             position: absolute;
             color: #ff3366;
-            font-size: 38px;
+            font-size: 36px;
             font-weight: bold;
             text-align: center;
             text-shadow: 0 0 12px rgba(255, 51, 102, 0.9);
@@ -53,13 +70,11 @@
             pointer-events: none;
         }
 
-        #left-text { left: 5%; }
-        #right-text { right: 5%; }
-
+        /* Estilo de las palabras que dibujan el corazón */
         .word {
             position: absolute;
             color: #ff3366;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
             white-space: nowrap;
             opacity: 0;
@@ -77,58 +92,63 @@
 
         @keyframes latido {
             0%, 100% { transform: scale(1); }
-            15% { transform: scale(1.08); }
+            15% { transform: scale(1.06); }
             30% { transform: scale(1); }
-            45% { transform: scale(1.04); }
+            45% { transform: scale(1.03); }
             60% { transform: scale(1); }
         }
 
+        /* Reproductor de música flotante */
         .music-player {
-            position: absolute;
-            bottom: 10px;
+            position: fixed;
+            bottom: 15px;
             right: 15px;
             z-index: 100;
             border-radius: 12px;
             box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
             overflow: hidden;
-            opacity: 0.85;
+            opacity: 0.9;
+            background: #000;
         }
 
-        /* ADAPTACIÓN MÓVIL (Pantallas verticales / Celulares) */
-        @media (max-width: 900px) {
+        /* ==========================================================
+           ADAPTACIÓN RESPONSIVA PARA CELULARES (PANTALLA VERTICAL)
+           ========================================================== */
+        @media (max-width: 850px) {
             body {
-                overflow-y: auto; /* Permite desplazamiento si hace falta en pantallas chicas */
+                overflow-y: auto; /* Permite scroll cómodo si el mensaje es largo */
+                align-items: flex-start;
             }
+
             #main-wrapper {
-                flex-direction: column;
-                justify-content: flex-start;
-                padding-top: 30px;
-                height: auto;
+                flex-direction: column; /* Cambia a disposición vertical ordenada */
+                gap: 25px;
+                padding-bottom: 90px; /* Deja espacio para el reproductor de música abajo */
             }
+
             .side-text {
-                position: relative;
                 width: 90%;
-                max-width: 320px;
-                font-size: 11px;
-                margin: 10px auto;
-                left: auto !important;
-                right: auto !important;
+                max-width: 340px;
+                font-size: 12px;
             }
-            #heart-container {
-                position: relative;
-                height: 300px;
-                width: 100%;
-                margin: 20px 0;
+
+            .heart-section {
+                width: 280px;
+                height: 280px;
+                margin: 10px 0;
             }
+
             .center-name {
                 font-size: 30px;
-                top: 180px;
             }
+
             .music-player {
-                position: relative;
-                bottom: auto;
+                position: fixed;
+                bottom: 10px;
+                left: 50%;
                 right: auto;
-                margin: 20px auto;
+                transform: translateX(-50%); /* Centra el reproductor abajo en celulares */
+                width: 280px;
             }
         }
     </style>
@@ -137,20 +157,20 @@
 
     <div id="main-wrapper">
         
-        <!-- Mensaje Izquierdo -->
+        <!-- Mensaje Superior (en celular) / Izquierdo (en PC) -->
         <div id="left-text" class="side-text">
             Primero que nada, quería darte las gracias por la amistad que tenemos y por siempre estar ahí. Hay muchas cosas que me gustaría decirte, pero no me sé explicar mucho, solo sé que una de las cosas que me gustaría que sepas es que:<br><br>
             Sos linda, pero no solo por fuera, linda por cómo sos vos. (Tu personalidad)<br><br>
             Tenés una sonrisa que me arregla el día entero, de esas que se contagian.
         </div>
 
-        <!-- Nombre Central -->
-        <div class="center-name">ZAI</div>
+        <!-- Sección central del Corazón -->
+        <div class="heart-section">
+            <div class="center-name">ZAI</div>
+            <div id="heart-container"></div>
+        </div>
 
-        <!-- Corazón -->
-        <div id="heart-container"></div>
-
-        <!-- Mensaje Derecho -->
+        <!-- Mensaje Inferior (en celular) / Derecho (en PC) -->
         <div id="right-text" class="side-text">
             Sos alegre, iluminás todo sin darte cuenta.<br><br>
             Sos buena compañía, de las que valen de verdad, de las que quiero tener cerca siempre.<br><br>
@@ -163,7 +183,7 @@
     <!-- Reproductor de la Playlist de YouTube -->
     <div class="music-player">
         <iframe 
-            width="260" 
+            width="280" 
             height="70" 
             src="https://www.youtube.com/embed/videoseries?list=PLEAw28d9Bt3A&autoplay=1&loop=1" 
             title="Playlist" 
@@ -188,9 +208,10 @@
             let x = 16 * Math.pow(Math.sin(t), 3);
             let y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
 
-            let escala = 18; 
-            let posX = container.offsetWidth / 2 + x * escala;
-            let posY = 150 + y * escala;
+            // Tamaño adaptado a la caja del corazón
+            let escala = container.offsetWidth > 300 ? 8.5 : 7.2; 
+            let posX = (container.offsetWidth / 2) + (x * escala);
+            let posY = (container.offsetHeight / 2) + (y * escala);
 
             const span = document.createElement('span');
             span.classList.add('word');
@@ -203,7 +224,7 @@
 
             container.appendChild(span);
 
-            if (container.children.length > 250) {
+            if (container.children.length > 220) {
                 container.removeChild(container.firstChild);
             }
         }
