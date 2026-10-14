@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>loquesalga - Mis Proyectos</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #0d0e12;
             color: #e0e6ed;
@@ -22,13 +17,7 @@
             justify-content: space-between;
             padding: 40px 20px;
         }
-
-        header {
-            text-align: center;
-            max-width: 700px;
-            margin-bottom: 40px;
-        }
-
+        header { text-align: center; max-width: 700px; margin-bottom: 40px; }
         h1 {
             font-size: 3rem;
             color: #ff3366;
@@ -36,14 +25,8 @@
             margin-bottom: 12px;
             letter-spacing: 2px;
         }
-
-        p.description {
-            font-size: 1.1rem;
-            color: #a0aec0;
-            line-height: 1.6;
-        }
-
-        /* Contenedor de las tarjetas de proyectos */
+        p.description { font-size: 1.1rem; color: #a0aec0; line-height: 1.6; }
+        
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -51,8 +34,6 @@
             width: 100%;
             max-width: 900px;
         }
-
-        /* Tarjeta de proyecto individual */
         .card {
             background: #161922;
             border: 1px solid #2d3748;
@@ -63,27 +44,14 @@
             justify-content: space-between;
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
-
         .card:hover {
             transform: translateY(-5px);
             border-color: #ff3366;
             box-shadow: 0 8px 20px rgba(255, 51, 102, 0.25);
         }
-
-        .card h2 {
-            font-size: 1.4rem;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: #a0aec0;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        /* Botón de acceso */
+        .card h2 { font-size: 1.4rem; color: #ffffff; margin-bottom: 10px; }
+        .card p { font-size: 0.95rem; color: #a0aec0; margin-bottom: 20px; line-height: 1.4; }
+        
         .btn {
             display: inline-block;
             text-align: center;
@@ -96,62 +64,43 @@
             font-size: 0.95rem;
             transition: background-color 0.2s ease, box-shadow 0.2s ease;
         }
-
         .btn:hover {
             background-color: #e02452;
             box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
         }
-
-        footer {
-            margin-top: 50px;
-            font-size: 0.85rem;
-            color: #718096;
-            text-align: center;
-        }
-
-        footer a {
-            color: #ff3366;
-            text-decoration: none;
-        }
+        footer { margin-top: 50px; font-size: 0.85rem; color: #718096; text-align: center; }
+        footer a { color: #ff3366; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado Principal -->
     <header>
         <h1>loquesalga</h1>
-        <p class="description">
-            cosas que me gusta intentar y subirlas. Selecciona un proyecto para abrirlo.
-        </p>
+        <p class="description">cosas que me gusta intentar y subirlas. Elige un proyecto abajo:</p>
     </header>
 
-    <!-- Lista de Proyectos disponibles para elegir -->
     <main class="projects-grid">
+        <!-- Botón 1: Corazón TQM -->
+        <div class="card">
+            <div>
+                <h2>❤️ Corazón TQM</h2>
+                <p>Animación interactiva del corazón formado por palabras con latidos en vivo.</p>
+            </div>
+            <a href="./TQM/CorazonTQM/" class="btn">Entrar al Proyecto 🚀</a>
+        </div>
 
-        <!-- Proyecto ZAI (El que acabamos de armar con dedicatoria y música) -->
+        <!-- Botón 2: Proyecto ZAI -->
         <div class="card">
             <div>
                 <h2>✨ Proyecto ZAI</h2>
-                <p>Dedicatoria especial interactiva con corazón animado, mensajes laterales personalizados, nombre central y playlist musical de YouTube.</p>
+                <p>Dedicatoria especial interactiva con corazón animado, mensajes laterales, nombre central y música.</p>
             </div>
-            <!-- Conecta exactamente con tu carpeta TQM/ZAI -->
             <a href="./TQM/ZAI/" class="btn">Entrar al Proyecto 🚀</a>
         </div>
-
-        <!-- Espacio para futuros proyectos -->
-        <div class="card">
-            <div>
-                <h2>🛠️ Próximo Proyecto</h2>
-                <p>Espacio reservado para el siguiente experimento, juego o página web que decidas agregar al repositorio.</p>
-            </div>
-            <a href="#" class="btn" style="opacity: 0.5; pointer-events: none;">Próximamente...</a>
-        </div>
-
     </main>
 
-    <!-- Pie de página -->
     <footer>
-        <p>Desarrollado por Benjamín | <a href="https://github.com/benjacogley462/loquesalga" target="_blank">Ver repositorio en GitHub</a></p>
+        <p>Desarrollado con ❤️ | <a href="https://github.com/benjacogley462/loquesalga" target="_blank">Ver repositorio en GitHub</a></p>
     </footer>
 
 </body>
