@@ -18,67 +18,76 @@
             overflow: hidden;
         }
 
-        /* Contenedor principal horizontal fijo (sin sacudones) */
+        /* Contenedor principal estático */
         #main-wrapper {
             position: relative;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             width: 100%;
             height: 100%;
+            padding: 0 4vw;
         }
 
-        /* Textos laterales fijos */
+        /* Textos laterales */
         .side-text {
-            position: absolute;
             color: #ff3366;
             font-size: 13px;
             font-weight: bold;
             text-align: center;
             line-height: 1.5;
             text-shadow: 0 0 6px rgba(255, 51, 102, 0.7);
-            width: 270px;
+            width: 280px;
             z-index: 5;
         }
 
-        #left-text { left: 6%; }
-        #right-text { right: 6%; }
-
-        /* Contenedor del corazón con el latido exclusivo de las palabras */
-        #heart-container {
+        /* SECCIÓN DEL CORAZÓN GRANDOTE EN PC */
+        .heart-section {
             position: absolute;
-            width: 0;
-            height: 0;
-            animation: latidoCorazon 1.5s infinite ease-in-out;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            /* El latido ocurre exclusivamente en el corazón */
+            animation: latidoCorazon 1.8s infinite ease-in-out;
         }
 
-        /* Nombre ZAI perfectamente centrado en el medio del corazón */
+        #heart-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Nombre ZAI centrado exacto */
         .center-name {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: #ff3366;
-            font-size: 34px;
+            font-size: 42px;
             font-weight: bold;
             text-align: center;
-            text-shadow: 0 0 12px rgba(255, 51, 102, 0.9);
+            text-shadow: 0 0 14px rgba(255, 51, 102, 0.95);
             z-index: 10;
-            pointer-events: none;
-            animation: latidoCorazon 1.5s infinite ease-in-out;
         }
 
-        /* Palabras individuales que forman el corazón */
+        /* Palabras que forman el corazón */
         .word {
             position: absolute;
             color: #ff3366;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: bold;
             white-space: nowrap;
             opacity: 0;
             transform: scale(0.5) translate(-50%, -50%);
             animation: aparecer 0.5s forwards;
-            text-shadow: 0 0 4px rgba(255, 51, 102, 0.6);
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.6);
         }
 
         @keyframes aparecer {
@@ -88,25 +97,87 @@
             }
         }
 
-        /* Latido suave que solo afecta al corazón y al texto central, sin mover la pantalla */
+        /* Latido sin sacudir pantalla */
         @keyframes latidoCorazon {
-            0%, 100% { transform: scale(1); }
-            15% { transform: scale(1.08); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.04); }
-            60% { transform: scale(1); }
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            15% { transform: translate(-50%, -50%) scale(1.06); }
+            30% { transform: translate(-50%, -50%) scale(1); }
+            45% { transform: translate(-50%, -50%) scale(1.03); }
+            60% { transform: translate(-50%, -50%) scale(1); }
         }
 
-        /* Reproductor de música flotante */
+        /* Reproductor de música */
         .music-player {
-            position: absolute;
+            position: fixed;
             bottom: 15px;
-            right: 20px;
+            right: 15px;
             z-index: 100;
             border-radius: 12px;
             box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
             overflow: hidden;
             opacity: 0.9;
+            background: #000;
+        }
+
+        /* ==========================================================
+           MODO CELULAR (RESPONSIVE): Detecta si se entra desde el cel
+           ========================================================== */
+        @media (max-width: 850px) {
+            body {
+                overflow-y: auto;
+                align-items: flex-start;
+                padding: 20px 10px;
+            }
+
+            #main-wrapper {
+                position: relative;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 20px;
+                height: auto;
+                padding-bottom: 90px;
+            }
+
+            .side-text {
+                position: relative;
+                width: 92%;
+                max-width: 340px;
+                font-size: 12px;
+                margin: 0 auto;
+            }
+
+            .heart-section {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                width: 320px;
+                height: 320px;
+                margin: 10px 0;
+                animation: latidoMovil 1.8s infinite ease-in-out;
+            }
+
+            .center-name {
+                font-size: 32px;
+            }
+
+            .music-player {
+                position: fixed;
+                bottom: 10px;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                width: 280px;
+            }
+
+            @keyframes latidoMovil {
+                0%, 100% { transform: scale(1); }
+                15% { transform: scale(1.06); }
+                30% { transform: scale(1); }
+                45% { transform: scale(1.03); }
+                60% { transform: scale(1); }
+            }
         }
     </style>
 </head>
@@ -114,20 +185,20 @@
 
     <div id="main-wrapper">
         
-        <!-- Mensaje Izquierdo -->
+        <!-- Texto Izquierdo (En cel va arriba) -->
         <div id="left-text" class="side-text">
             Primero que nada, quería darte las gracias por la amistad que tenemos y por siempre estar ahí. Hay muchas cosas que me gustaría decirte, pero no me sé explicar mucho, solo sé que una de las cosas que me gustaría que sepas es que:<br><br>
             Sos linda, pero no solo por fuera, linda por cómo sos vos. (Tu personalidad)<br><br>
             Tenés una sonrisa que me arregla el día entero, de esas que se contagian.
         </div>
 
-        <!-- Nombre ZAI centrado -->
-        <div class="center-name">ZAI</div>
+        <!-- Corazón enorme en el centro -->
+        <div class="heart-section">
+            <div class="center-name">ZAI</div>
+            <div id="heart-container"></div>
+        </div>
 
-        <!-- Contenedor del corazón (más compacto) -->
-        <div id="heart-container"></div>
-
-        <!-- Mensaje Derecho -->
+        <!-- Texto Derecho (En cel va abajo) -->
         <div id="right-text" class="side-text">
             Sos alegre, iluminás todo sin darte cuenta.<br><br>
             Sos buena compañía, de las que valen de verdad, de las que quiero tener cerca siempre.<br><br>
@@ -137,7 +208,7 @@
 
     </div>
 
-    <!-- Reproductor de la Playlist de YouTube -->
+    <!-- Reproductor de YouTube -->
     <div class="music-player">
         <iframe 
             width="280" 
@@ -165,10 +236,12 @@
             let x = 16 * Math.pow(Math.sin(t), 3);
             let y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
 
-            // Escala achicada para que el corazón quede ordenado y compacto
-            let escala = 16; 
-            let posX = x * escala;
-            let posY = y * escala;
+            // Detectamos si es pantalla chica (celular) o grande (PC) para ajustar la escala
+            let esCelular = window.innerWidth <= 850;
+            let escala = esCelular ? 8.5 : 15.0; 
+
+            let posX = (container.offsetWidth / 2) + (x * escala);
+            let posY = (container.offsetHeight / 2) + (y * escala);
 
             const span = document.createElement('span');
             span.classList.add('word');
@@ -181,12 +254,12 @@
 
             container.appendChild(span);
 
-            if (container.children.length > 250) {
+            if (container.children.length > (esCelular ? 220 : 350)) {
                 container.removeChild(container.firstChild);
             }
         }
 
-        setInterval(generarPalabra, 30);
+        setInterval(generarPalabra, 25);
     </script>
 
 </body>
